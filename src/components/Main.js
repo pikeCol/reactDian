@@ -7,25 +7,35 @@ import Second from './second'
 import { BrowserRouter, Route, Link ,Switch} from 'react-router-dom'
 
 // let yeomanImage = require('../images/yeoman.png');
-
+import List from './list'
+import Firstside from './firstside'
+import Secondside from './secondside'
+import Login from './login'
 
 class AppComponent extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
+
   render() {
+    let {children} = this.props;
     return (
       <div className="index">
         <BrowserRouter>
           <div>
               <ul>
+                <li><Link to="/">List</Link></li>
                 <li><Link to="/first">first</Link></li>
-                <li><Link to="/second">Inbox</Link></li>
+                <li><Link to="/second/3333">second</Link></li>
+                <li><Link to="/login">second</Link></li>
               </ul>
-             <Switch>
-               <Route path="/first" component={First} />
-               <Route path="/second" component={Second} />
-             </Switch>
+               <Route exact path="/" component={List}/>
+               <Route path="/first" render={(props)=>(
+                 <First {...props} keys={1} />
+               )}/>
+             <Route path="/second/:id" render={(props)=>(
+                 <Second {...props} keys={2} />
+               )} />
            </div>
          </BrowserRouter>
       </div>

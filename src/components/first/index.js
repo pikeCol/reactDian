@@ -5,10 +5,9 @@ class First extends React.Component {
     super(props);
   }
   render() {
+    console.log(this.props.location)
     return(
-      <h1>我是first
-      </h1>
-
+      <h1>我是first,传来的key是{this.props.keys}</h1>
     )
   }
 }
